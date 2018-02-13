@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -13,7 +13,7 @@
       }
 
       body {
-        margin: 1rem;
+        margin: 0;
         padding: 0;
         background-color: #C7D66D;
       }
@@ -30,6 +30,7 @@
       h1 {
         font-size: 8vw;
         margin: 5rem 0;
+        z-index: 2;
       }
 
       p {
@@ -38,24 +39,96 @@
         margin: 5rem 0;
       }
 
+      @keyframes bounce {
+        from {
+          transform: translateY(0);
+        } to {
+          transform: translateY(-10vh);
+        }
+      }
+
+      @keyframes bounceReverse {
+        from {
+          transform: translateY(-10vh);
+        } to {
+          transform: translateY(0);
+        }
+      }
+
+      .bounce,
+      .bounce-reverse {
+        animation: 1s infinite alternate bounce;
+        animation-timing-function: cubic-bezier(.52, .9, .52, .9);
+      }
+
+      .bounce-reverse {
+        animation-name: bounceReverse;
+      }
+
+      .contact {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+
       .circle {
-        width: 58vw;
-        height: 58vw;
-        max-width: 58vh;
-        max-height: 58vh;
-        margin: 0 auto;
-        border: 1rem solid #E7ECEF;
+        content: '';
+        display: block;
+        position: relative;
+        width: 40vw;
+        height: 40vw;
+        max-width: 40vh;
+        max-height: 40vh;
+        margin:0 auto;
+        background-color: #C7D66D;
+        border: 1.5rem solid #E7ECEF;
         border-radius: 50%;
+        box-shadow: 0 0 3rem #888888;
+        overflow: hidden;
+        transform: translate(0);
+        z-index: 1;
+      }
+
+      .email {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 0.5vh;
+        font-size: 2.2rem;
+        text-decoration: none;
       }
     </style>
   </head>
+
   <body>
-    <div class="header">
-      <h1 id="home">
+    <!-- Home -->
+    <div class="home">
+      <h1>
         <a href="">humhann.github.io</a>
       </h1>
       <p>Not much here for now,<br>but while you wait:</p>
     </div>
-    <div class="circle"></div>
+
+    <!-- Contact -->
+    <div class="contact bounce">
+      <div class="circle">
+        <a class="email bounce-reverse" href="mailto:gregor585@gmail.com">
+          Gregor Hann<br>@gmail.com
+        </a>
+      </div>
+    </div>
+
+    <!-- Script -->
+    <!--<script>
+      function ready(fn) {
+        if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+          fn();
+        } else {
+          document.addEventListener('DOMContentLoaded', fn);
+        }
+      }
+
+      ready(function() { });
+    </script>-->
   </body>
 </html>
